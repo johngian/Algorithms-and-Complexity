@@ -5,7 +5,6 @@
    The Partition Problem
    aka: "The book-copy problem"
    Author: John Giannelos <johngiannelos@gmail.com>
-
 */
 
 
@@ -22,7 +21,7 @@ int main(void) {
     p[i+1]=p[i]+S[i];
   }
   
-  //initialize boundary conditions
+  //Initialize boundary conditions
   for (i=0;i<9;i++){
     M[i][0]=p[i+1];
   }
@@ -30,7 +29,7 @@ int main(void) {
     M[0][i]=S[0];
   }
   
-  //Computing dynamic programming matriced M and D
+  //Computing dynamic programming matrices M and D
   for (i=1;i<9;i++){
     for (j=1;j<3;j++){
       M[i][j]=99999;
