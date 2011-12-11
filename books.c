@@ -2,22 +2,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int max=0;
+
 void ReconstructPartition(int *S,int **D,int n,int k){
-  int i;
+  int i,tmp;
   if (k==1){
-    printf("{");
+    tmp=0;
     for (i=0;i<n;i++){
-      printf("%d",S[i]);
+      tmp+=S[i];
     }
-    printf("} \n");
+    if (tmp>max) max=tmp;
   }
   else{
     ReconstructPartition(S,D,D[n][k],(k-1));
-    printf("{");
+    tmp=0;
     for (i=D[n][k];i<n;i++){
-      printf("%d",S[i]);
+      tmp+=S[i];
     }
-    printf("} \n");
+    if (tmp>max) max=tmp;
   }
 }
     
@@ -75,25 +77,9 @@ int main(void){
       }
     }
   }  
-  
-  for (i=1;i<=n;i++){
-    for (j=1;j<=k;j++){
-      printf("%d ",M[i][j]);
-    }
-    printf("\n");
-  }
-  printf("\n");
-
-  for (i=1;i<=n;i++){
-    for (j=1;j<=k;j++){
-      printf("%d ",D[i][j]);
-    }
-    printf("\n");
-  }
-  printf("\n");
-
+    
   ReconstructPartition(S,D,n,k);
-
+  
+  printf("%d",max);
   return 0;
-
 }
