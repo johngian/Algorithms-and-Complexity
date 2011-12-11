@@ -2,6 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void ReconstructPartition(int *S,int **D,int n,int k){
+  int i;
+  if (k==1){
+    printf("{");
+    for (i=0;i<n;i++){
+      printf("%d",S[i]);
+    }
+    printf("} \n");
+  }
+  else{
+    ReconstructPartition(S,D,D[n][k],(k-1));
+    printf("{");
+    for (i=D[n][k];i<n;i++){
+      printf("%d",S[i]);
+    }
+    printf("} \n");
+  }
+}
+    
+
 int main(void){
   int i,j,x,k,s,n,pages,tmp1,tmp2;
   int *S,*p,prev,**M,**D;
@@ -72,6 +92,7 @@ int main(void){
   }
   printf("\n");
 
+  ReconstructPartition(S,D,n,k);
 
   return 0;
 
