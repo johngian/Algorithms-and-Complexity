@@ -80,6 +80,6 @@ int main(void){
     
   ReconstructPartition(S,D,n,k);
   
-  printf("%d",max);
+  printf("%d\n",max);
   return 0;
 }
