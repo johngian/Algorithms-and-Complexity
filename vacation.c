@@ -51,9 +51,9 @@ int main(void){
       x=k+1;
       y=i;
     }
-    
   }
-  printf("(%d,%d)\n",x,y);
-  printf("Segment Length:%d \n",(y-x+1));
+  
+  printf("%d\n",(y-x+1));
+  
   return 0;
 }
