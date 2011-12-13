@@ -1,10 +1,10 @@
 all: vacation books
 
 vacation:
-	gcc -o vacation vacation/vacation.c
+	gcc -o vacation vacation-problem/vacation.c
 
 books:
-	gcc -o books books/books.c
+	gcc -o books books-problem/books.c
 
 .PHONY: clean 
 
@@ -13,9 +13,9 @@ clean:
 	rm vacation
 
 testVacation: vacation
-	./vacation < vacation/testcases-vacation/input${TEST}.txt
-	@cat vacation/testcases-vacation/output${TEST}.txt
+	./vacation < vacation-problem/testcases-vacation/input${TEST}.txt
+	@cat vacation-problem/testcases-vacation/output${TEST}.txt
 
 testBooks: books
-	./books < books/testcases-books/input${TEST}.txt
-	@cat books/testcases-books/output${TEST}.txt
+	./books < books-problem/testcases-books/input${TEST}.txt
+	@cat books-problem/testcases-books/output${TEST}.txt
