@@ -9,7 +9,8 @@ int main(void){
 
     scanf("%d",&n);
     scanf("%d",&L);
-  
+
+    //Allocating appropriate array of (n+1) size, first element is 0
     S=(int*)malloc((n+1)*sizeof(int));
     S[0]=0;
   
@@ -28,6 +29,7 @@ int main(void){
 	i++;
     }
 
+    //Creating B[0...n] array with 
     for (i=1;i<=n;i++){
 	B[i]=S[i]-L;
     }
@@ -42,7 +44,7 @@ int main(void){
 	}
 	k=i-y+x-1;
 	while (k>0){
-	    if (C[i]-C[M[k]]>0){
+	    if (C[i]-C[M[k]]>=0){
 		k=M[k];
 	    }
 	    else{
