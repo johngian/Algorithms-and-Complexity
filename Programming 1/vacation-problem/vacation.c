@@ -4,7 +4,7 @@
 
 int main(void){
     int *M,*S,*C,*B;
-    int i,j,x=0,y=0,k;
+    int i,x=0,y=0,k;
     int n,L,t,flag;
 
     scanf("%d",&n);

@@ -4,7 +4,7 @@
 
 int main(void){
     int i,j,x,k,s,n,pages,tmp1,tmp2;
-    int *S,*p,prev,**M,**D;
+    int *S,*p,**M;
   
     scanf("%d",&n);
     scanf("%d",&k);

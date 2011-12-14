@@ -1,10 +1,10 @@
 all: vacation books
 
 vacation:
-	gcc -o vacation.out vacation-problem/vacation.c
+	gcc -o vacation.out vacation-problem/vacation.c -O2 -Wall
 
 books:
-	gcc -o books.out books-problem/books.c
+	gcc -o books.out books-problem/books.c -O2 -Wall
 
 .PHONY: clean 
 
