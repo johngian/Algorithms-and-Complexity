@@ -30,6 +30,8 @@ int main(void){
     
     //Add elements until exceed average
     
+
+    
     output=Workers[0];
     for (i=1;i<k;i++){
 	output=max(Workers[i],output);

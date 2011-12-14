@@ -2,28 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int max=0;
-
-void ReconstructPartition(int *S,int **D,int n,int k){
-    int i,tmp;
-    if (k==1){
-	tmp=0;
-	for (i=0;i<n;i++){
-	    tmp+=S[i];
-	}
-	if (tmp>max) max=tmp;
-    }
-    else{
-	ReconstructPartition(S,D,D[n][k],(k-1));
-	tmp=0;
-	for (i=D[n][k];i<n;i++){
-	    tmp+=S[i];
-	}
-	if (tmp>max) max=tmp;
-    }
-}
-    
-
 int main(void){
     int i,j,x,k,s,n,pages,tmp1,tmp2;
     int *S,*p,prev,**M,**D;
@@ -34,11 +12,9 @@ int main(void){
     S=(int*)malloc(n*sizeof(int));
     p=(int*)malloc((n+1)*sizeof(int));
     M=malloc((n+1)*sizeof(int *));
-    D=malloc((n+1)*sizeof(int *));
-  
+      
     for (i=0;i<n+1;i++){
 	M[i]=malloc(k*sizeof(int));
-	D[i]=malloc(k*sizeof(int));
     }
 
     i=0;
@@ -72,14 +48,11 @@ int main(void){
 		s=max(tmp1,tmp2);
 		if (M[i][j]>s){
 		    M[i][j]=s;
-		    D[i][j]=x;
 		}
 	    }
 	}
     }  
-    
-    ReconstructPartition(S,D,n,k);
-  
-    printf("%d\n",max);
+
+    printf("%d\n",M[n][k]);
     return 0;
 }
