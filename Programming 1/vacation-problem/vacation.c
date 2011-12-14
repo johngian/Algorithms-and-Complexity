@@ -5,7 +5,7 @@
 int main(void){
     int *M,*S,*C,*B;
     int i,j,x=0,y=0,k;
-    int n,L,t;
+    int n,L,t,flag;
 
     scanf("%d",&n);
     scanf("%d",&L);
@@ -28,6 +28,20 @@ int main(void){
 	S[i]=t;
 	i++;
     }
+    
+    flag=1;
+    //one-element segments
+    for (i=1;i<=n;i++){
+	if (S[i]>=L){
+	    flag=0;
+	}
+    }
+    
+    if(flag==1){
+	printf("0\n");
+	return 0;
+    }
+
 
     //Creating B[0...n] array with 
     for (i=1;i<=n;i++){
@@ -53,13 +67,11 @@ int main(void){
 	    x=k+1;
 	    y=i;
 	}
+	
     }
     
-    if(x!=0 && y!=0){
+    
 	printf("%d\n",(y-x+1));
-    }
-    else{
-	printf("0\n");
-    }
+
     return 0;
 }

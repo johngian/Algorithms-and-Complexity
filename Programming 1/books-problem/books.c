@@ -34,11 +34,11 @@ int main(void){
     S=(int*)malloc(n*sizeof(int));
     p=(int*)malloc((n+1)*sizeof(int));
     M=malloc((n+1)*sizeof(int *));
-//    D=malloc((n+1)*sizeof(int *));
+    D=malloc((n+1)*sizeof(int *));
   
     for (i=0;i<n+1;i++){
 	M[i]=malloc(k*sizeof(int));
-//	D[i]=malloc(k*sizeof(int));
+	D[i]=malloc(k*sizeof(int));
     }
 
     i=0;
@@ -72,13 +72,13 @@ int main(void){
 		s=max(tmp1,tmp2);
 		if (M[i][j]>s){
 		    M[i][j]=s;
-//		    D[i][j]=x;
+		    D[i][j]=x;
 		}
 	    }
 	}
     }  
     
-//    ReconstructPartition(S,D,n,k);
+    ReconstructPartition(S,D,n,k);
   
     printf("%d\n",max);
     return 0;
