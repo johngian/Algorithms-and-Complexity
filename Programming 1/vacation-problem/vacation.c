@@ -30,7 +30,7 @@ int main(void){
     }
     
     flag=1;
-    //one-element segments
+    //one-element segments detecting
     for (i=1;i<=n;i++){
 	if (S[i]>=L){
 	    flag=0;
@@ -69,9 +69,7 @@ int main(void){
 	}
 	
     }
-    
-    
-	printf("%d\n",(y-x+1));
-
+   
+    printf("%d\n",(y-x+1));
     return 0;
 }
