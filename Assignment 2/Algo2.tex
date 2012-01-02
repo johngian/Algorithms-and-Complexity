@@ -44,13 +44,16 @@
 \begin{algorithmic}[1]
   \State Initialize $t_{optimal}[n] \gets 0$	\Comment {Αρχικοποίηση πίνακα $t_{optimal}$ μεγέθους $n$ }
   \State $i \gets 1$
-  \While{$T \geq \nicefrac{V[i]}{X[i]}$}
-    \State $t_{optimal}[i] \gets \nicefrac{V[i]}{X[i]}$
-    \State $i \gets i+1$
-    \State $T \gets T-t_{optimal}$
-  \EndWhile
-  \State $t_{optimal}[i]=T$
-
+  \For{$i=1 \to n$}
+    \If{$T \geq \nicefrac{V[i]}{X[i]}$}
+      \State $t_{optimal}[i] \gets \nicefrac{V[i]}{X[i]}$
+      \State $i \gets i+1$
+      \State $T \gets T - t_{optimal}[i]$
+    \Else
+      \State break
+    \EndIf
+    
+  \EndFor
 \end{algorithmic}
 \end{algorithm}
 
