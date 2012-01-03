@@ -1,4 +1,4 @@
-all : teleport xmasshopping
+all : xmasshopping teleport
 
 teleport:
 	gcc -o teleport.out teleport-problem/teleport.c -O2 -Wall
