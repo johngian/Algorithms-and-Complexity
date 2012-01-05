@@ -19,11 +19,6 @@ int main(void){
   int Ax,Ay,Bx,By;
   int shop_x,shop_y, **shops;
   
-  //Memory allocation
-  shops=malloc(n*sizeof(int));
-  for (i=0;i<n;i++){
-    shops[i]=malloc(2*sizeof(int));
-  }
   
   //Input reading
   scanf("%d %d %d\n",&n,&r,&c);
@@ -32,14 +27,19 @@ int main(void){
   scanf("%d",&Bx);
   scanf("%d",&By);
   
-  i=0;
-  while (scanf("%d",&shop_x)==1){
-    scanf("%d",&shop_y);
-    shops[i][0]=shop_x;
-    shops[i][1]=shop_y;
-    i++;
+  //Memory allocation
+  shops=malloc(n*sizeof(int *));
+  for (i=0;i<n;i++){
+    shops[i]=malloc(2*sizeof(int));
   }
 
+  for (i=0;i<n;i++){
+    scanf("%d",&shop_x);
+    shops[i][0]=shop_x;
+    scanf("%d",&shop_y);
+    shops[i][1]=shop_y;
+  }
+  
   //Problem solution
   //dtable: (n+1)x(n+1) dynamic array
   int **dtable;
@@ -87,9 +87,8 @@ int main(void){
     if (dtable[i][n]<min){
       min=dtable[i][n];
     }
-    printf("%d \n",min);
   }
   
-
+  printf("%d \n",min);
   return 0;
 }
