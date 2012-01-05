@@ -14,7 +14,7 @@ int manhattan(int **xy,int i,int j){
 
 int main(void){
   
-  int i,j,tmp,min;
+  int i,j,k,tmp,min;
   int n,r,c;  
   int Ax,Ay,Bx,By;
   int shop_x,shop_y, **shops;
@@ -26,7 +26,7 @@ int main(void){
   scanf("%d",&Ay);
   scanf("%d",&Bx);
   scanf("%d",&By);
-  
+   
   //Memory allocation
   shops=malloc(n*sizeof(int *));
   for (i=0;i<n;i++){
@@ -81,14 +81,17 @@ int main(void){
   }
   
 
-  
+    
   min=dtable[0][n];
+  k=0;
+  printf("%d \n",dtable[0][n]);
   for (i=1;i<n;i++){
     if (dtable[i][n]<min){
       min=dtable[i][n];
+      k=i;
     }
+    printf("%d \n",dtable[i][n]);
   }
   
-  printf("%d \n",min);
   return 0;
 }
