@@ -1,4 +1,3 @@
-#define max(x1,x2) ((x1) > (x2) ? (x1):(x2))
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -61,15 +60,15 @@ int main(void){
   
   for (i=0;i<n;i++){
     for (j=i+1;j<n+1;j++){
-      if (i==0 && j==1){
+      if ((i==0) && (j==1)){
 	dtable[i][j]=0;
       }
       else{
-	if (j==i-1){
-	  min=dtable[0][i]+manhattan(shops,0,j);
-	  for (tmp=1;tmp<i;tmp++){
-	    if ((dtable[tmp][i]+manhattan(shops,tmp,j))<min){
-	      min=dtable[tmp][i]+manhattan(shops,tmp,j);
+	if (j==(i+1)){
+	  min=dtable[0][j-1]+manhattan(shops,0,j);
+	  for (tmp=1;tmp<(j-1);tmp++){
+	    if ((dtable[tmp][j-1]+manhattan(shops,tmp,j))<min){
+	      min=dtable[tmp][j-1]+manhattan(shops,tmp,j);
 	    }
 	    dtable[i][j]=min;
 	  }
@@ -83,13 +82,14 @@ int main(void){
   
 
   
-  min=dtable[0][n-1];
+  min=dtable[0][n];
   for (i=1;i<n;i++){
-    if (dtable[i][n-1]<min){
-      min=dtable[i][n-1];
+    if (dtable[i][n]<min){
+      min=dtable[i][n];
     }
     printf("%d \n",min);
   }
   
+
   return 0;
 }
