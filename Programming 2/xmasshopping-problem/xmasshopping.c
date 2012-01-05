@@ -8,7 +8,7 @@ int manhattan(int **xy,int i,int j){
 
 int main(void){
   
-  int i,j,k,min_dist,tmp;
+  int i,j,k,min_dist,tmp,min;
   int n,r,c;  
   int Ax,Ay,Bx,By;
   int shop_x,shop_y, **shops;
@@ -36,19 +36,21 @@ int main(void){
 
   //Problem solution
   //dtable: nxn dynamic array
-  
   int **dtable;
-  dtable=malloc(n*sizeof(int));
+  dtable=malloc(n*sizeof(int *));
   for (i=0;i<n;i++){
     dtable[i]=malloc(n*sizeof(int));
   }
   
+  //dtable[i][j] initialization
   for (i=0;i<n;i++){
-    dtable[0][i]=0;
+    for (j=0;j<n;j++){
+      dtable[i][j]=0;
+    }
   }
   
   //Dynamic programming recursion
-  for (i=1;i<n;i++){
+  for (i=0;i<n-1;i++){
     for (j=i+1;j<n;j++){
       if (j-i==1){
 	min_dist=dtable[0][i];
@@ -60,13 +62,22 @@ int main(void){
 	  }
 	}
 	dtable[i][j]=min_dist+manhattan(shops,k,j);
+	printf("%d \n",dtable[i][j]);
       }
       else{
 	dtable[i][j]=dtable[i][j-1]+manhattan(shops,j-1,j);
+	printf("%d \n",dtable[i][j]);
       }
     }
   }
 
+  min=dtable[0][n-1];
+  for (i=1;i<n;i++){
+    if (dtable[i][n-1]<min){
+      min=dtable[i][n-1];
+    }
+    printf("%d \n",min);
+  }
 
   return 0;
 }
