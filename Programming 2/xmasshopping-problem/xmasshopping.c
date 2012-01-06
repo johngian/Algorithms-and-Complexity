@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int manhattan(int **xy,int i,int j){
   if (i==0){
     return 0;
@@ -14,7 +13,7 @@ int manhattan(int **xy,int i,int j){
 
 int main(void){
   
-  int i,j,k,tmp,min;
+  int i,j,tmp,min;
   int n,r,c;  
   int Ax,Ay,Bx,By;
   int shop_x,shop_y, **shops;
