@@ -28,12 +28,17 @@ int main(void){
   scanf("%d",&By);
    
   //Memory allocation
-  shops=malloc(n*sizeof(int *));
-  for (i=0;i<n;i++){
+  shops=malloc((n+2)*sizeof(int *));
+  for (i=0;i<(n+2);i++){
     shops[i]=malloc(2*sizeof(int));
   }
-
-  for (i=0;i<n;i++){
+  
+  shops[n+1][0]=Ax;
+  shops[n][0]=Bx;
+  shops[n+1][1]=Ay;
+  shops[n][1]=By;
+  
+  for (i=n-1;i>=0;i--){
     scanf("%d",&shop_x);
     shops[i][0]=shop_x;
     scanf("%d",&shop_y);
@@ -43,14 +48,14 @@ int main(void){
   //Problem solution
   //dtable: (n+1)x(n+1) dynamic array
   int **dtable;
-  dtable=malloc((n+1)*sizeof(int *));
-  for (i=0;i<(n+1);i++){
-    dtable[i]=malloc((n+1)*sizeof(int));
+  dtable=malloc((n+3)*sizeof(int *));
+  for (i=0;i<(n+3);i++){
+    dtable[i]=malloc((n+3)*sizeof(int));
   }
   
   //dtable[i][j] initialization
-  for (i=0;i<n+1;i++){
-    for (j=0;j<n+1;j++){
+  for (i=0;i<n+3;i++){
+    for (j=0;j<n+3;j++){
       dtable[i][j]=0;
     }
   }
@@ -58,8 +63,8 @@ int main(void){
 
   //Dynamic programming recursion
   
-  for (i=0;i<n;i++){
-    for (j=i+1;j<n+1;j++){
+  for (i=0;i<n+2;i++){
+    for (j=i+1;j<n+3;j++){
       if ((i==0) && (j==1)){
 	dtable[i][j]=0;
       }
@@ -80,18 +85,7 @@ int main(void){
     }
   }
   
+  printf("%d",dtable[n+1][n+2]);
 
-    
-  min=dtable[0][n];
-  k=0;
-  printf("%d \n",dtable[0][n]);
-  for (i=1;i<n;i++){
-    if (dtable[i][n]<min){
-      min=dtable[i][n];
-      k=i;
-    }
-    printf("%d \n",dtable[i][n]);
-  }
-  
   return 0;
 }

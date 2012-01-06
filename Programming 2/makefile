@@ -13,8 +13,10 @@ clean:
 	rm xmas.out
 
 testTeleport: teleport
-	time ./teleport.out < teleport-problem/testcases-teleport/input${TEST}.txt                                                                                                                                         @cat teleport-problem/testcases-teleport/output${TEST}.txt
+	time ./teleport.out < teleport-problem/testcases-teleport/input${TEST}.txt   
+	@cat teleport-problem/testcases-teleport/output${TEST}.txt
 
 
 testXmasshopping: xmasshopping
-	time ./xmas.out < xmasshopping-problem/testcases-xmasshopping/input${TEST}.txt                                                                                                                                     @cat xmasshopping-problem/testcases-xmasshopping/output${TEST}.txt
+	time ./xmas.out < xmasshopping-problem/testcases-xmas/input${TEST}.txt                   
+	@cat xmasshopping-problem/testcases-xmasshopping/output${TEST}.txt
