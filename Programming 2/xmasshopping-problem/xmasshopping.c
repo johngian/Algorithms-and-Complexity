@@ -85,7 +85,7 @@ int main(void){
     }
   }
   
-  printf("%d",dtable[n+1][n+2]);
+  printf("%d\n",dtable[n+1][n+2]);
 
   return 0;
 }
