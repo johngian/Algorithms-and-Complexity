@@ -19,4 +19,4 @@ testTeleport: teleport
 
 testXmasshopping: xmasshopping
 	time ./xmas.out < xmasshopping-problem/testcases-xmas/input${TEST}.txt                   
-	@cat xmasshopping-problem/testcases-xmasshopping/output${TEST}.txt
+	@cat xmasshopping-problem/testcases-xmas/output${TEST}.txt
