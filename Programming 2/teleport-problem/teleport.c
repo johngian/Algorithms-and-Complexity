@@ -153,17 +153,22 @@ int main(void){
   best = (int*) malloc ( sizeof( int ) * k );
   prev = (int*) malloc ( sizeof( int ) * k );
  
-  for ( i = 0; i < n; i++ ) best[i] = 1, prev[i] = i;
+  for ( i = 0; i < n; i++ ) {
+    best[i] = 1; 
+    prev[i] = i;
+  }
  
   for ( i = 1; i < n; i++ )
     for ( j = 0; j < i; j++ )
-	if ( x[i] > x[j] && best[i] < best[j] + 1 )
-	  best[i] = best[j] + 1, prev[i] = j;  // prev[] is for backtracking the subsequence
+      if ( x[i] >= x[j] && best[i] < best[j] + 1 ){
+	best[i] = best[j] + 1;
+	prev[i] = j;  // prev[] is for backtracking the subsequence
+      }
   
   for ( i = 0; i < n; i++ )
-    if ( max < best[i] )
+    if ( max < best[i] ){
       max = best[i];
- 
+    }
  
   printf("\n\n%d \n",max);
 
