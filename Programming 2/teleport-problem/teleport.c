@@ -138,7 +138,6 @@ int main(void){
   }
   
   //Search for longest increasing subsequence of X(i)
-  
   int *best, *prev, max = 0;
   best = (int*) malloc ( sizeof( int ) * k );
   prev = (int*) malloc ( sizeof( int ) * k );
