@@ -99,52 +99,42 @@ int main(void){
   }
 
   qsort(ends,n,sizeof(int),comp1);
-  for(i=0;i<n;i++){
-    printf("%d\n",ends[i]);
-  }
-  printf("\n");
   quicksort(temp1,0,n-1,temp2);
   
   k=0;
   unique[0]=temp1[0];
   j=0;
-  printf("%d\n",unique[0]);
   for (i=1;i<n;i++){
     if (unique[k]!=temp1[i]){
       k++;
       unique[k]=temp1[i];
       quicksort(temp2,j,i-1,temp1);
-      printf("%d\n",unique[k]);
       j=i;
     }
   }
-  printf("\n");
 
   for(i=0;i<n;i++){
     tele[i][0]=temp1[i];
     tele[i][1]=temp2[i];
-
   }  
+
   free(temp1);
   free(temp2);
 
   //Computing unique ends
   k=0;
   unique[0]=ends[0];
-  printf("%d\n",unique[0]);
   for (i=1;i<n;i++){
     if (unique[k]!=ends[i]){
       k++;
       unique[k]=ends[i];
-      printf("%d\n",unique[k]);
     }
   }
-  printf("\n");
+
   //X(i) is a function for the order of i 
   for (i=0;i<n;i++){
     tmp=mySearch(unique,k,tele[i][1]);
     x[i]=tmp;
-    printf("%d\n",x[i]);
   }
   
   //Search for longest increasing subsequence of X(i)
@@ -170,7 +160,7 @@ int main(void){
       max = best[i];
     }
  
-  printf("\n\n%d \n",max);
+  printf("%d\n",max);
 
   return 0;
 }
