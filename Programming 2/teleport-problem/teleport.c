@@ -99,6 +99,7 @@ int main(void){
   }
 
   qsort(ends,n,sizeof(int),comp1);
+  //Using self-implemented qsort for 2d arrays
   quicksort(temp1,0,n-1,temp2);
   
   k=0;
@@ -136,30 +137,40 @@ int main(void){
     tmp=mySearch(unique,k,tele[i][1]);
     x[i]=tmp;
   }
+  free(unique);
+  free(ends);
+  free(tele);
+  //Search for longest non-decreasing subsequence of X(i)
+  int *lis,*p;
+  int c,u,v,back;
+  lis = malloc(n*sizeof(int));
+  p=malloc(n*sizeof(int));
+
+  lis[0]=0;
+  back=0;
+  for (i=1;i<n;i++){
+    if (x[lis[back]]<=x[i]){
+      p[i]=lis[back];
+      back++;
+      lis[back]=i;
+      continue;
+    }
+    
+    for(u=0,v=back;u<v;){
+      c=(u+v)/2;
+      if (x[lis[c]]<=x[i]) u=c+1;else v=c;
+    }
+
+    if(x[i]<=x[lis[u]]){
+      if (u>0) p[i]=lis[u-1];
+      lis[u]=i;
+    }
+  }
   
-  //Search for longest increasing subsequence of X(i)
-  int *best, *prev, max = 0;
-  best = (int*) malloc ( sizeof( int ) * k );
-  prev = (int*) malloc ( sizeof( int ) * k );
- 
-  for ( i = 0; i < n; i++ ) {
-    best[i] = 1; 
-    prev[i] = i;
+  for(u=back+1,v=lis[back];u--;v=p[v]){
+    lis[u]=v;
   }
  
-  for ( i = 1; i < n; i++ )
-    for ( j = 0; j < i; j++ )
-      if ( x[i] >= x[j] && best[i] < best[j] + 1 ){
-	best[i] = best[j] + 1;
-	prev[i] = j;  // prev[] is for backtracking the subsequence
-      }
-  
-  for ( i = 0; i < n; i++ )
-    if ( max < best[i] ){
-      max = best[i];
-    }
- 
-  printf("%d\n",max);
-
+  printf("%d\n",back+1);
   return 0;
 }
