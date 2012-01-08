@@ -101,7 +101,6 @@ int main(void){
   qsort(ends,n,sizeof(int),comp1);
   //Using self-implemented qsort for 2d arrays
   quicksort(temp1,0,n-1,temp2);
-  
   k=0;
   unique[0]=temp1[0];
   j=0;
@@ -113,6 +112,7 @@ int main(void){
       j=i;
     }
   }
+  quicksort(temp2,j,n-1,temp1);
 
   for(i=0;i<n;i++){
     tele[i][0]=temp1[i];
@@ -137,9 +137,11 @@ int main(void){
     tmp=mySearch(unique,k,tele[i][1]);
     x[i]=tmp;
   }
+  
   free(unique);
   free(ends);
   free(tele);
+
   //Search for longest non-decreasing subsequence of X(i)
   int *lis,*p;
   int c,u,v,back;
